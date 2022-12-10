@@ -1,6 +1,20 @@
-import React from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { todoAction } from '../../store/todoSlice';
+
+const host =
+    process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_DEV
+        : process.env.REACT_APP_PROD;
 
 function TodoItem({ todos }) {
+    const dispatch = useDispatch();
+
+    const clickHandler = (id) => {
+        axios
+            .delete(`${host}/api/todo/${id}`)
+            .then((res) => dispatch(todoAction.setTodo(`${id} deleted`)));
+    };
     return (
         <div>
             {todos.map((todo) => (
@@ -23,7 +37,10 @@ function TodoItem({ todos }) {
                         </p>
                     </div>
 
-                    <button className="cursor-pointer rounded-md bg-red-700 py-1 px-2 text-white">
+                    <button
+                        onClick={clickHandler.bind(null, todo._id)}
+                        className="cursor-pointer rounded-md bg-red-700 py-1 px-2 text-white"
+                    >
                         Delete
                     </button>
                 </div>
