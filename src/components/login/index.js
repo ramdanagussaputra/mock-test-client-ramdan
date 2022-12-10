@@ -38,7 +38,11 @@ function Login() {
                 id: userRef.current.value,
                 password: passwordRef.current.value,
             })
-            .then((res) => dispatch(loginAction.setToken(res.data.token)))
+            .then((res) => {
+                dispatch(loginAction.setToken(res.data.token));
+                dispatch(loginAction.setUserId(res.data.data._id));
+                dispatch(loginAction.setLoading(true));
+            })
             .catch((err) => alert(err.response.data.message));
     };
 
