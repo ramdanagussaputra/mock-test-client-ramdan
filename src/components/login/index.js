@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAction } from '../../store/loginSlice';
 
 const host =
     process.env.NODE_ENV === 'development'
@@ -11,21 +13,33 @@ function Login() {
     const passwordRef = useRef();
     const userRef = useRef();
 
+    // GLOBAL STATE
+    const loginState = useSelector((state) => state.login);
+    const dispatch = useDispatch();
+
     // LOCAL STATE
     const [users, setUsers] = useState([]);
 
     // SIDE EFFECTS
     // Get all user data
     useEffect(() => {
-        axios.get(`${host}/api/user`).then((res) => setUsers(res.data.data));
+        axios
+            .get(`${host}/api/user`)
+            .then((res) => setUsers(res.data.data))
+            .catch((err) => alert('Does not have user'));
     }, []);
 
     // HANDLER
     const submitHandler = (e) => {
         e.preventDefault();
 
-        console.log(userRef.current.value);
-        console.log(passwordRef.current.value);
+        axios
+            .post(`${host}/api/user/login`, {
+                id: userRef.current.value,
+                password: passwordRef.current.value,
+            })
+            .then((res) => dispatch(loginAction.setToken(res.data.token)))
+            .catch((err) => alert(err.response.data.message));
     };
 
     return (
