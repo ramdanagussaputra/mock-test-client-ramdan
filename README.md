@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# Mock Test Binar - Todo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Answer The Questions
+
+1. Apakah Kegunaan JSON pada REST API?
+   JSON atau JavaScript Object Notation merupakan format data untuk transaksi data yang mudah di baca dan di uraikan oleh mesin. Sementara REST API merupakan arsitektur client-server yang menggunakan protokol HTTP (Dell Technologies)
+2. Jelaskan bagaimana REST API bekerja
+   REST API bekerja menggunakan metode HTTP seperti GET, POST, PUT, DELETE yang browser dapat gunakan untuk mengakses sebuah website. Komunikasi antara client dan server terjadi melalui request dan response dari HTTP. Setiap request harus stateless, dimana server tidak menyimpan state informasi dari applikasi. Namun, request dari client yang mengandung seluruh informasi yang di butuh kan oleh server. (Dell Technologies)
+
+## Features
+
+User Account:
+
+-   User A
+    Pasword: 1234
+-   User B
+    Password: 4321
+
+You can login using 2 account above, after login you can add todo list with task name and target date for task to accomplish
+
+## Link
+
+-   Client
+    https://mock-test-client-ramdan.vercel.app
+-   Server
+    https://mock-test-server-ramdan.vercel.app
 
 ## Available Scripts
 
@@ -38,33 +61,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
