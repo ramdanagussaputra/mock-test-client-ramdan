@@ -1,4 +1,3 @@
-// import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -6,13 +5,6 @@ import { loginAction } from './store/loginSlice';
 import Login from './components/login';
 import Todo from './components/todo';
 import Loading from './components/loading';
-
-// // Setup router
-// const router = createBrowserRouter(createRoutesFromElements(
-//   <Route path='/' element={<Login/>}>
-
-//   </Route>
-// ))
 
 const host =
     process.env.NODE_ENV === 'development'
