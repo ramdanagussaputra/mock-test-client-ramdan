@@ -1,5 +1,11 @@
+import Login from './components/login';
+
 function App() {
-    return <h1 className="bg-lime-400">Test</h1>;
+    return (
+        <div className="relative min-h-screen bg-violet-400">
+            <Login />
+        </div>
+    );
 }
 
 export default App;
