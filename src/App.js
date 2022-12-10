@@ -27,7 +27,8 @@ function App() {
     // LOCAL STATE
     const [user, setUsers] = useState(null);
 
-    // Retrive todo data
+    // SIDE EFFECTS
+    // JWT Auth
     useEffect(() => {
         if (!token || !userId) return;
         axios
@@ -47,7 +48,7 @@ function App() {
         <div className="relative min-h-screen bg-violet-400">
             {!user && <Login />}
             {loading && <Loading />}
-            {user && !loading && <Todo data={user} />}
+            {user && !loading && <Todo userData={user} />}
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { todoAction } from '../../store/todoSlice';
 
 const host =
     process.env.NODE_ENV === 'development'
@@ -14,6 +15,7 @@ function TodoInput({ userId }) {
 
     // GLOBAL STATE
     const { token } = useSelector((state) => state.login);
+    const dispatch = useDispatch();
 
     // HANDLER
     const submitHandler = (e) => {
@@ -32,7 +34,7 @@ function TodoInput({ userId }) {
                     },
                 }
             )
-            .then((res) => console.log(res))
+            .then((res) => dispatch(todoAction.setTodo(res.data.data)))
             .catch((err) => {
                 if (err.response.data.message.startsWith('Todo validation failed'))
                     alert('Please input valid date');
