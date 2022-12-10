@@ -6,9 +6,11 @@ const loginSlice = createSlice({
         token: '',
         userId: '',
         loading: false,
+        logout: false,
     },
     reducers: {
         setToken(state, actions) {
+            state.logout = false;
             state.token = actions.payload;
         },
 
@@ -18,6 +20,11 @@ const loginSlice = createSlice({
 
         setLoading(state, actions) {
             state.loading = actions.payload;
+        },
+
+        logout(state) {
+            state.logout = true;
+            state.token = '';
         },
     },
 });

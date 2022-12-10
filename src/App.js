@@ -21,7 +21,7 @@ const host =
 
 function App() {
     // GLOBAL STATE
-    const { token, userId, loading } = useSelector((state) => state.login);
+    const { token, userId, loading, logout } = useSelector((state) => state.login);
     const dispatch = useDispatch();
 
     // LOCAL STATE
@@ -31,6 +31,7 @@ function App() {
     // JWT Auth
     useEffect(() => {
         if (!token || !userId) return;
+
         axios
             .get(`${host}/api/user/${userId}`, {
                 headers: {
@@ -43,6 +44,11 @@ function App() {
             })
             .catch((err) => alert(err));
     }, [token, userId, dispatch]);
+
+    useEffect(() => {
+        if (!logout) return;
+        setUsers(null);
+    }, [logout]);
 
     return (
         <div className="relative min-h-screen bg-violet-400">

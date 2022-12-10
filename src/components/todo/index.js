@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import { todoAction } from '../../store/todoSlice';
 import axios from 'axios';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
+import Logout from '../logout';
 
 const host =
     process.env.NODE_ENV === 'development'
@@ -14,14 +14,13 @@ function Todo({ userData: { id, name, todos: initialTodos } }) {
     // GLOBAL STATE
     const { token } = useSelector((state) => state.login);
     const { todo } = useSelector((state) => state.todo);
-    // const dispatch = useDispatch();
 
     // LOCAL STATE
     const [todos, setTodos] = useState(initialTodos);
 
     // SIDE EFFECTS
-    // Set new todos
     useEffect(() => {
+        if (!token) return;
         axios
             .get(`${host}/api/user/${id}`, {
                 headers: {
@@ -34,7 +33,11 @@ function Todo({ userData: { id, name, todos: initialTodos } }) {
 
     return (
         <div className="mx-auto max-w-md space-y-7 py-12">
-            <h2 className="mb-3 text-center text-xl uppercase text-white">{`Hi, ${name}`}</h2>
+            <div className="flex items-center justify-between">
+                <h2 className=" text-center text-xl uppercase text-white">{`Hi, ${name}`}</h2>
+                <Logout />
+            </div>
+
             <TodoInput userId={id} />
             {todos && <TodoItem todos={todos} />}
             {todos.length === 0 && <p>Todo empty</p>}
