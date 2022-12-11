@@ -17,7 +17,7 @@ function TodoItem({ todos }) {
     };
     return (
         <div>
-            {todos.map((todo) => (
+            {todos?.map((todo) => (
                 <div
                     key={todo._id}
                     className={`my-3 flex items-center justify-between rounded-md ${

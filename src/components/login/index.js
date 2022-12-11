@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginAction } from '../../store/loginSlice';
 
 const host =
@@ -14,7 +14,6 @@ function Login() {
     const userRef = useRef();
 
     // GLOBAL STATE
-    const loginState = useSelector((state) => state.login);
     const dispatch = useDispatch();
 
     // LOCAL STATE
@@ -63,7 +62,7 @@ function Login() {
                     >
                         <option value={null}>Pick User</option>
 
-                        {users.map((user) => (
+                        {users?.map((user) => (
                             <option key={user.id} value={user.id}>
                                 {user.name}
                             </option>
