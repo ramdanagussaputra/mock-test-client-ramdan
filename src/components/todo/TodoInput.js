@@ -35,10 +35,7 @@ function TodoInput({ userId }) {
                 }
             )
             .then((res) => dispatch(todoAction.setTodo(res.data.data)))
-            .catch((err) => {
-                if (err.response.data.message.startsWith('Todo validation failed'))
-                    alert('Please input task and/or valid date');
-            });
+            .catch((err) => alert('Please input task and/or valid date'));
 
         taskRef.current.value = '';
         dateRef.current.value = '';
